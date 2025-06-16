@@ -1,19 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: k8s-backend-post-jdbc-service
+name: k8s-backend-post-service
 spec:
-  ports:
-    - port: 3306
-
----
-
-apiVersion: v1
-kind: Endpoints
-metadata:
-  name: k8s-backend-post-jdbc-service
-subsets:
-  - addresses:
-      - ip: 172.30.1.92
-    ports:
-      - port: 13307
+ports:
+  - port: 8080
+targetPort: 8080
+selector:
+app: k8s-backend-post
